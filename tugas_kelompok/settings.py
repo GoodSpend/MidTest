@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-t&ykmeu6e0b$(hve1&yml&cuirv3kd+id(0#x3d6pnnq+t=dsp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [f'https://{APP_NAME}.up.railway.app']
+APP_NAME = 'SpendSmart'
+
+ALLOWED_HOSTS = [f'https://{APP_NAME}.up.railway.app', 'localhost']
 CSRF_TRUSTED_ORIGINS = [f'https://{APP_NAME}.up.railway.app']
 
 # Application definition
