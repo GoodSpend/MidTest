@@ -5,6 +5,7 @@
 2. Nataya Shafira(2106706905)
 3. Wahyu sahrijal (2106752142)
 4. Qonita Adestyanti (2106750925)
+5. Muhammad Kemal Hanan (2106654864)
 
 ## Tautan Aplikasi Railway
 Railway tidak dapat digunakan.
@@ -17,6 +18,7 @@ GoodSpending berfungsi sebagai alat bantu yang membantu pengguna untuk memonitor
 2. Loan calculator (M. Raffi)
 3. Billing Reminder (Qonita Adestyanti)
 4. Financial News (Wahyu Sahrijal)
+5. Loan and Billing Data (Muhammad Kemal Hanan)
 
 ## User Role
 1. Admin: Sebagai administrator
