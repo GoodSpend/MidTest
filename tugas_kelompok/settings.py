@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'loancalculator',
+    'blog',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>SmartSpent</title>
+{% endblock meta %}
 
 {% block content %}
-<h1>Hello World!</h1>
+<div class="top-wrapper">
+    <img style="width:100%" src="{%static "img/finance_bg.jpg" %}" alt="">
+    <h1>Good spend, made easy.</h1>
+    <p>GoodSpend adalah platform online untuk membantu pengelolaan uang.</p>
+    <a href="#" class="btn signup">Daftar sekarang!</a>
+</div>
 {% endblock content %}

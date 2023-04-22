@@ -1,0 +1,88 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $.get("/blog/json/", function(data) {
+            for (i=0; i<data.length; i++){
+                $('#blog').append(`
+                <div id="${data[i].id}--task">
+                    <div class="card w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">${data[i].fields.title}</h5>
+                            <p class="card-text">${data[i].fields.content}</p>
+                            <p class="card-text date">${data[i].fields.date}</p>
+                            <div class="mt-auto">
+                                <a href="/blog/delete/${data[i].pk}" class="btn btn-primary delete mb-2">Hapus</a>
+                                <a href="/blog/modify/${data[i].pk}" class="btn btn-secondary mb-2">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `)
+            }
+        });
+
+        $("#submit_btn").click(function(){
+            $.post("/blog/modify-ajax/", {
+                title: $("#title").val(),
+                content: $("#content").val()
+            },
+            function(result, status){
+                if (status == 'success'){
+                    $("#blog").append(`
+                    <div id="${result.id}--task">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <h5 class="card-title">${result.title}</h5>
+                                <p class="card-text">${result.content}</p>
+                                <p class="card-text date">${result.date}</p>
+                                <div class="mt-auto">
+                                    <a href="/blog/delete/${data[i].pk}" class="btn btn-primary delete mb-2">Hapus</a>
+                                    <a href="/blog/modify/${data[i].pk}" class="btn btn-secondary mb-2">Ubah</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `);
+                $('#title').val('')
+                $('#content').val('')
+                $('#date').val('')
+                }
+            })
+        })
+    })
+</script>
+
+
+    
+<body>
+    <h5>Nama: </h5>
+    <p>{{name}}</p>
+
+    <div class="modal" id="modifyModal" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            div class="modal-header">
+            <h1 class="modal-title fs-5" id="modifyModalLabel">Edit</h1>
+            </div>
+            <div class="modal-body">
+            {% csrf_token %}
+            <label for="title" class="form-label">Judul blog:</label><br>
+            <input type="text" id="title" class="form-control" name="title" placeholder="Maximizing Your Wealth: How To Spend Smart"><br>
+            <label for="content" class="form-label">Konten:</label><br>
+            <textarea class="form-control" id="content" rows="8"></textarea>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button id="submit_btn" type="button" class="btn btn-primary modify" id="add-task" data-bs-dismiss="modal">Edit</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<div class="row m-2" id="blog"></div>
+
+{% endblock content %}
