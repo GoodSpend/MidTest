@@ -1,0 +1,48 @@
+{% extends 'base_blog.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="mx-auto" style="width: 500px;">
+    <br><br>
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">Log In</h5>
+          <form method="POST" action="">
+              {% csrf_token %}
+              <table>
+                  <tr>
+                      <td>Username: </td>
+                      <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                  </tr>
+      
+                  <tr>
+                      <td>Password: </td>
+                      <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                  </tr>
+                </table>
+                <input class="btn btn-primary form-control" type="submit" value="Login">
+          </form>
+          {% if messages %}
+              <ul>
+                  {% for message in messages %}
+                      <li>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+          {% endif %}
+          <div class="card-text align-items-center d-flex justify-content-center">
+            Belum mempunyai akun? &nbsp<a href="{% url 'home:register' %}">Buat Akun</a>
+        </div>
+        </div>
+      </div>
+
+
+</div>
+
+{% endblock content %}

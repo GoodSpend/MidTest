@@ -19,7 +19,7 @@ def show_posts(request):
     context = {
         'list_of_posts': post_data,
         'name': request.user.username,
-        'last_login': request.COOKIES['last_login'],
+        #'last_login': request.COOKIES['last_login'],
 
     }
     return render(request, "show_posts_editor.html", context)
