@@ -15,14 +15,14 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home:home' %}">GoodSpend</a>
+      <a class="navbar-brand" href="/">GoodSpend</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +34,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:home' %}">Loan Calculator</a>
+            <a class="nav-link" href="{% url 'loancalculator:load_loanform' %}">Loan Calculator</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home:home' %}">Billing Reminder</a>
@@ -45,7 +45,7 @@
             <a class="nav-link" href="#" style="color:white">{{ name }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:logout_user'}" style="color: white"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            <a class="nav-link" href="/logout/" style="color: white"><i class="fas fa-sign-out-alt"></i>Logout</a>
           </li>
         </ul>
       </div>
