@@ -10,7 +10,14 @@ from home.forms import CustomUserCreationForm
 
 # Create your views here.
 def home(request):
-    return render(request, "home.html")
+    name = request.user.username
+    context = {
+        'name': request.user.username
+    }
+    if name == '':
+        return render(request, "home_anon.html")
+    else:
+        return render(request, "home.html", context)
 
 def register(request):
     form = UserCreationForm()
