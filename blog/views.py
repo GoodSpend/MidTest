@@ -22,7 +22,7 @@ def show_posts(request):
         #'last_login': request.COOKIES['last_login'],
 
     }
-    return render(request, "show_posts_editor.html", context)
+    return render(request, "show_posts.html", context)
 
 def create_post(request):
     form = BlogPostForm(request.POST or None)

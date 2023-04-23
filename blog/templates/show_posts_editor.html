@@ -8,13 +8,13 @@
             for (i=0; i<data.length; i++){
                 $('#blog').append(`
                 <div id="${data[i].id}--task">
-                    <div class="card w-100">
+                    <div class="card w-80">
                         <div class="card-body">
                             <h5 class="card-title">${data[i].fields.title}</h5>
                             <p class="card-text">${data[i].fields.content}</p>
                             <p class="card-text date">${data[i].fields.date}</p>
                             <div class="mt-auto">
-                                <a href="/blog/delete/${data[i].pk}" class="btn btn-primary delete mb-2">Hapus</a>
+                                <a href="/blog/delete/${data[i].pk}" class="btn btn-dark delete mb-2">Hapus</a>
                                 <a href="/blog/modify/${data[i].pk}" class="btn btn-secondary mb-2">Ubah</a>
                             </div>
                         </div>
@@ -33,13 +33,13 @@
                 if (status == 'success'){
                     $("#blog").append(`
                     <div id="${result.id}--task">
-                        <div class="card w-100">
+                        <div class="card w-80">
                             <div class="card-body">
                                 <h5 class="card-title">${result.title}</h5>
                                 <p class="card-text">${result.content}</p>
                                 <p class="card-text date">${result.date}</p>
                                 <div class="mt-auto">
-                                    <a href="/blog/delete/${data[i].pk}" class="btn btn-primary delete mb-2">Hapus</a>
+                                    <a href="/blog/delete/${data[i].pk}" class="btn btn-dark delete mb-2">Hapus</a>
                                     <a href="/blog/modify/${data[i].pk}" class="btn btn-secondary mb-2">Ubah</a>
                                 </div>
                             </div>
@@ -58,9 +58,8 @@
 
     
 <body>
-    <h5>Nama: </h5>
-    <p>{{name}}</p>
-
+    <br><br>
+    <h3 style="text-align: center">"Discover the Power of Your Words. Start Blogging and Share Your Voice with the World!"</h1><br>
     <div class="modal" id="modifyModal" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -76,7 +75,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button id="submit_btn" type="button" class="btn btn-primary modify" id="add-task" data-bs-dismiss="modal">Edit</button>
+            <button id="submit_btn" type="button" class="btn btn-dark modify" id="add-task" data-bs-dismiss="modal">Edit</button>
             </div>
         </div>
         </div>
