@@ -14,24 +14,26 @@
         <title>GoodSpend | Loan Calculator</title>
     </head>
     <body>
-        <form id="insert-loan-form" method="POST">
-            <div class="form-group col-md-4 col-md-offset-4">
-                <label for="loanAmount">Loan Amount</label>
-                <input type="number" class="form-control" id="loanAmountInput" placeholder="ex : Rp100.000.000">
-                <small id="loanAmountHelp" class="form-text text-muted">Kurs dalam Rupiah. Isi dengan nominal saja, contohnya seperti "100000000".</small>
-            </div>
-            <div class="form-group col-md-4 col-md-offset-4">
-                <label for="annualInterest">Annual Interest</label>
-                <input type="number" class="form-control" id="annualInterestInput" placeholder="ex : 10%">
-                <small id="annualInterestHelp" class="form-text text-muted">Dalam persentase. Isi dengan nominal saja, contohnya seperti "10".</small>
-            </div>
-            <div class="form-group col-md-4 col-md-offset-4">
-                <label for="tenor">Tenor</label>
-                <input type="number" class="form-control" id="tenorInput" placeholder="ex : 5 Year">
-                <small id="tenorHelp" class="form-text text-muted">Dalam tahun. Isi dengan nominal saja, contohnya seperti "5".</small>
-            </div>
-                <input type="submit" class="btn btn-primary col-md-4 col-md-offset-4" name="submit" value="Calculate" data-toggle="modal" data-target="#calculatedLoanModal"></button>
-        </form>
+      <div class="container">
+          <form id="insert-loan-form" method="POST">
+              <div class="form-group col-md-4 col-md-offset-4">
+                  <label for="loanAmount">Loan Amount</label>
+                  <input type="number" class="form-control" id="loanAmountInput" placeholder="ex : Rp100.000.000">
+                  <small id="loanAmountHelp" class="form-text text-muted">Kurs dalam Rupiah. Isi dengan nominal saja, contohnya seperti "100000000".</small>
+              </div>
+              <div class="form-group col-md-4 col-md-offset-4">
+                  <label for="annualInterest">Annual Interest</label>
+                  <input type="number" class="form-control" id="annualInterestInput" placeholder="ex : 10%">
+                  <small id="annualInterestHelp" class="form-text text-muted">Dalam persentase. Isi dengan nominal saja, contohnya seperti "10".</small>
+              </div>
+              <div class="form-group col-md-4 col-md-offset-4">
+                  <label for="tenor">Tenor</label>
+                  <input type="number" class="form-control" id="tenorInput" placeholder="ex : 5 Year">
+                  <small id="tenorHelp" class="form-text text-muted">Dalam tahun. Isi dengan nominal saja, contohnya seperti "5".</small>
+              </div>
+                  <input type="submit" class="btn btn-primary col-md-4 col-md-offset-4" name="submit" value="Calculate" data-toggle="modal" data-target="#calculatedLoanModal"></button>
+          </form>
+      </div>
 
         <div class="modal fade" id="calculatedLoanModal" tabindex="-1" role="dialog" aria-labelledby="calculatedLoanModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -65,6 +67,22 @@
             </ul>
         {% endif %}
     </body>
+    <style>
+      body {
+        background-image: url("{% static 'img/finance_bg.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .container {
+        margin-top: 100px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        border-color: black;
+      }
+    </style>
+  
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
