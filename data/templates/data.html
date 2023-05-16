@@ -1,0 +1,125 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+      $.get("/data/json/", function(data) {
+          for (i=0; i<data.length; i++){
+              $('#data').append(`
+              <div id="${data[i].id}--task" class="col-md-6 col-lg-3 mb-3">
+                  <div class="card d-flex">
+                      <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">${data[i].fields.name}</h5>
+                          <p class="card-text date">${data[i].fields.date}</p>
+                          <p class="card-text">${data[i].fields.type}</p>
+                          <p class="card-text">${data[i].fields.amount}</p>
+                          <p class="card-text">${data[i].fields.deadline}</p>
+                          <p class="card-text">${data[i].fields.description}</p>
+                          <div class="mt-auto">
+                              <a href="/data/delete/${data[i].pk}" class="btn btn-primary delete mb-2">Hapus</a>
+                              <a href="/data/modify/${data[i].pk}" class="btn btn-secondary mb-2">Ubah</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              `)
+          }
+      });
+
+      $("#submit_btn").click(function(){
+          $.post("/data/create-ajax/", {
+              name: $("#name").val(),
+              type: $("#type").val(),
+              amount: $("#amount").val(),
+              deadline: $("#deadline").val(),
+              description: $("#description").val()
+          },
+          function(result, status){
+            console.log($("#name").val())
+            console.log($("#type").val())
+            console.log($("#amount").val())
+            console.log($("#deadline").val())
+            console.log($("#description").val())
+              if (status == 'success'){
+                  $("#data").append(`
+                  <div id="${result.id}--task" class="col-md-6 col-lg-3 mb-3">
+                      <div class="card d-flex">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">${result.name}</h5>
+                              <p class="card-text date">${result.date}</p>
+                              <p class="card-text">${result.type}</p>
+                              <p class="card-text">${result.amount}</p>
+                              <p class="card-text">${result.deadline}</p>
+                              <p class="card-text">${result.description}</p>
+                              <div class="mt-auto">
+                                  <a href="/data/delete/${result.id}" class="btn btn-primary delete mb-2">Hapus</a>
+                                  <a href="/data/modify/${result.id}" class="btn btn-secondary mb-2">Ubah</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  `);
+              $('#name').val('')
+              $('#date').val('')
+              $('#amount').val('')
+              $('#deadline').val('')
+              $('#description').val('')
+              }
+          })
+      })
+  })
+</script>
+
+  <body>
+    <h3 class="text-center">Simpan Pinjaman dan Tagihanmu!</h3>
+    <div class="mx-auto" style="width: 200px">
+        <button type="button" class="btn btn-dark" class="button_create" data-bs-toggle="modal" data-bs-target="#createModal">
+            Tambahkan Data Transaksi!
+        </button><br><br>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="createModalLabel">Tambah Transaksi</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+            </div>
+            <div class="modal-body">
+            {% csrf_token %}
+            <label for="name" class="form-label">Judul transaksi:</label><br>
+            <input type="text" id="name" class="form-control" name="name" placeholder="Bayar UKT"><br>
+            <label for="type" class="form-label">Tipe Data:</label>
+            <select name="type" id="type" class="form-select" aria-label="Default select example">
+                <option selected value="Pinjaman">Pinjaman</option>
+                <option value="Tagihan">Tagihan</option>
+            </select><br>
+            <label for="amount" class="form-label">Jumlah:</label><br>
+            <input type="number" id="amount" class="form-control" name="amount" placeholder="100000"><br>
+            <label for="description" class="form-label">Jatuh Tempo:</label><br>
+            <input type="text" id="deadline" class="form-control" name="deadline" placeholder="26 Mei 2023"><br>
+            <label for="description" class="form-label">Deskripsi:</label><br>
+            <input type="text" id="description" class="form-control" name="description" placeholder="UKT untuk Bulan Mei"><br>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button id="submit_btn" type="button" class="btn btn-primary create" id="add-task" data-bs-dismiss="modal">Add</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<div class="row m-2" id="data"></div>
+
+<style>
+    .text-center {
+        text-align: center;
+        color: white;
+    }
+</style>
+
+{% endblock content %}
