@@ -1,0 +1,37 @@
+{% extends 'base_blog.html' %}
+{% include 'header_authorized.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<head>
+	<title>Financial News</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../static/css/styles.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-3">
+	<div class="d-flex justify-content-between mb-3">
+		<h1>Financial News</h1>
+		<a href="{% url 'financial_news:news_create' %}" class="btn btn-light align-self-center">New News</a>
+	</div>
+	{% for news in news %}
+	<div class="card mb-3 text-dark">
+		<div class="card-body">
+			<h5 class="card-title">{{ news.title }}</h5>
+			<h6 class="card-subtitle mb-2">{{ news.author }}</h6>
+			<p class="card-text">{{ news.content }}</p>
+			<p class="card-text"><small>{{ news.publish_date }}</small></p>
+			<a href="{% url 'financial_news:news_update' news.id %}" class="btn btn-primary">Edit</a>
+			<a href="{% url 'financial_news:news_delete' news.id %}" class="btn btn-danger">Delete</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+</body>
+
+{% endblock content %}

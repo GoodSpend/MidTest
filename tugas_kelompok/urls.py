@@ -21,5 +21,9 @@ urlpatterns = [
     path('', include('home.urls')),
     path('loancalculator/', include('loancalculator.urls')),
     path('blog/', include('blog.urls')),
+<<<<<<< HEAD
     path('data/', include('data.urls')),
+=======
+    path('financial_news/', include('financial_news.urls')),
+>>>>>>> 39bf82ca29c09ec18527f44dceda23d24044655f
 ]

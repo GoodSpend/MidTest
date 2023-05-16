@@ -27,7 +27,11 @@ DEBUG = True
 
 APP_NAME = 'SpendSmart'
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['*']
+=======
+ALLOWED_HOSTS = [f'https://{APP_NAME}.up.railway.app', 'localhost', '*']
+>>>>>>> 39bf82ca29c09ec18527f44dceda23d24044655f
 CSRF_TRUSTED_ORIGINS = [f'https://{APP_NAME}.up.railway.app']
 
 # Application definition
@@ -42,8 +46,12 @@ INSTALLED_APPS = [
     'home',
     'loancalculator',
     'blog',
+<<<<<<< HEAD
     'bootstrap5',
     'data',
+=======
+    'financial_news',
+>>>>>>> 39bf82ca29c09ec18527f44dceda23d24044655f
 ]
 
 MIDDLEWARE = [
