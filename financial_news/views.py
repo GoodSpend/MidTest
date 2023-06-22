@@ -45,7 +45,7 @@ def news_delete(request, pk):
     return render(request, 'news_confirm_delete.html', {'news': news})
 
 @csrf_exempt
-def news_list(request):
+def news_list_app(request):
     news = News.objects.all()
     return HttpResponse(serializers.serialize("json", news), content_type="application/json")
 
