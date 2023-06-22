@@ -1,4 +1,4 @@
-# GoodSpending
+# GoodSpend
 
 ## Anggota Kelompok
 1. M.Raffi(2106653760)
