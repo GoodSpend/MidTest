@@ -5,7 +5,7 @@ app_name = 'financial_news'
 
 urlpatterns = [
     path('', views.news_list, name='news_list'),
-    path('app', views.news_list, name='news_list'),
+    path('app', views.news_list_app, name='news_list_app'),
     path('news/new/', views.news_create, name='news_create'),
     path('news/new/app', views.news_create_app, name='news_create_app'),
     path('news/delete/app', views.news_delete_app, name='news_delete_app'),
