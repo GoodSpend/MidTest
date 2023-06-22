@@ -64,7 +64,7 @@ def show_json_by_id(request):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @user_passes_test(checkEditor)
-def modify_post(request, id):
+def modify_post(request, id, user):
     # Get data berdasarkan ID
     blogpost = BlogPost.objects.get(pk = id)
 
@@ -80,7 +80,7 @@ def modify_post(request, id):
     return render(request, "modify_post.html", context)
 
 @user_passes_test(checkEditor)
-def delete_post(request, id):
+def delete_post(request, id, user):
     # Get data berdasarkan ID
     blogpost = BlogPost.objects.get(pk = id)
     # Hapus data
