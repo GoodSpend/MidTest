@@ -7,8 +7,8 @@
 4. Qonita Adestyanti (2106750925)
 5. Muhammad Kemal Hanan (2106654864)
 
-## Tautan Aplikasi Railway
-Railway tidak dapat digunakan.
+## Tautan Aplikasi
+goodspends.domcloud.io
 
 ## Cerita Aplikasi
 GoodSpending berfungsi sebagai alat bantu yang membantu pengguna untuk memonitor pengeluaran mereka. User juga bisa melihat berbagai spending yang sudah dikalkulasikan dengan tampilanan yang menarik. Fitur yang tidak kalah menarik pada app ini juga adalah pengingat atau schedule untuk user melakukan pembayaran billing atau dan pencatatan loan. Aplikasi ini juga menyediakan fitur edukasi keuangan yang tersedia pada Financial News dan Financial Blog.
