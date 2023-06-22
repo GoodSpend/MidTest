@@ -41,9 +41,9 @@ def create_post(request):
     context = {'form': form}
     return render(request, "create_post.html", context)
 
-def checkEditor(request, user):
+def checkEditor(user):
     test_group = Group.objects.get(name='editor')
-    user_group = request.user.groups.all()
+    user_group = user.groups.all()
     status = test_group in user_group
     return status
 
@@ -64,7 +64,7 @@ def show_json_by_id(request):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @user_passes_test(checkEditor)
-def modify_post(request, id, user):
+def modify_post(request, id):
     # Get data berdasarkan ID
     blogpost = BlogPost.objects.get(pk = id)
 
@@ -80,7 +80,7 @@ def modify_post(request, id, user):
     return render(request, "modify_post.html", context)
 
 @user_passes_test(checkEditor)
-def delete_post(request, id, user):
+def delete_post(request, id):
     # Get data berdasarkan ID
     blogpost = BlogPost.objects.get(pk = id)
     # Hapus data
